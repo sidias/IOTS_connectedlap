@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.wso2.carbon.analytics:org.wso2.carbon.analytics.io.commons:1.0.6-ALPHA">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/wso2/carbon/analytics/org.wso2.carbon.analytics.io.commons/1.0.6-ALPHA/org.wso2.carbon.analytics.io.commons-1.0.6-ALPHA.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/wso2/carbon/analytics/org.wso2.carbon.analytics.io.commons/1.0.6-ALPHA/org.wso2.carbon.analytics.io.commons-1.0.6-ALPHA-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/wso2/carbon/analytics/org.wso2.carbon.analytics.io.commons/1.0.6-ALPHA/org.wso2.carbon.analytics.io.commons-1.0.6-ALPHA-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

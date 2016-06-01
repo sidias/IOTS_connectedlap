@@ -1,0 +1,8 @@
+
+{
+  "deviceType": {
+    "label": "CONNECTEDLAP",
+    "category": "virtual",
+    "downloadAgentUri": "CONNECTEDLAP/device/download"
+  }
+}
