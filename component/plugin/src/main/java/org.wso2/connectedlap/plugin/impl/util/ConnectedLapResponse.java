@@ -21,7 +21,7 @@ package org.wso2.connectedlap.plugin.impl.uti;
 public class ConnectedLapResponse {
 
     private String refreshToken;
-    private String accessToken ;
+    private String accessToken;
 
     public ConnectedLapResponse(String accessToken, String refreshToken) {
         this.accessToken = accessToken;

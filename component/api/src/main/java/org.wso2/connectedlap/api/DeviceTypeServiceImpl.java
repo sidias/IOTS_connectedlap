@@ -129,7 +129,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
                 enrolmentInfo.setOwnership(EnrolmentInfo.OwnerShip.BYOD);
                 device.setName(agentInfo.deviceName);
                 device.setType(DeviceTypeConstants.DEVICE_TYPE);
-                enrolmentInfo.setOwner(/*APIUtil.getAuthenticatedUser()*/ "admin");
+                enrolmentInfo.setOwner(APIUtil.getAuthenticatedUser());
                 device.setEnrolmentInfo(enrolmentInfo);
 
                 boolean added = APIUtil.getDeviceManagementService().enrollDevice(device);
@@ -140,7 +140,6 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
                     //TODO:add validation in here
                     APIUtil.getDeviceDataManagerService().getConnectedLapDatManager().addDeviceInfo(connectedLapDevice);
 
-                    /*--------------------------
                     if (apiApplicationKey == null) {
                         String applicationUsername = PrivilegedCarbonContext.getThreadLocalCarbonContext().getUserRealm()
                                 .getRealmConfiguration().getAdminUserName();
@@ -153,25 +152,25 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
                     JWTClient jwtClient = APIUtil.getJWTClientManagerService().getJWTClient();
                     String scopes = "device_type_" + DeviceTypeConstants.DEVICE_TYPE + " device_" + agentInfo.deviceId;
                     AccessTokenInfo accessTokenInfo = jwtClient.getAccessToken(apiApplicationKey.getConsumerKey(),
-                            apiApplicationKey.getConsumerSecret(), /*agentInfo.owner APIUtil.getAuthenticatedUser() + "@" + APIUtil.getAuthenticatedUserTenantDomain(), scopes);
+                            apiApplicationKey.getConsumerSecret(), agentInfo.owner + "@" + APIUtil.getAuthenticatedUserTenantDomain(), scopes);
 
                     //create token
-                    /*String accessToken = accessTokenInfo.getAccessToken();
+                    String accessToken = accessTokenInfo.getAccessToken();
                     String refreshToken = accessTokenInfo.getRefreshToken();
 
                     ConnectedLapResponse connectedLapResponse = new ConnectedLapResponse(accessToken, refreshToken);
-                    return Response.ok(connectedLapResponse, MediaType.APPLICATION_JSON).build(); */
+                    return Response.ok(connectedLapResponse, MediaType.APPLICATION_JSON).build();
 
                     //TODO: send the reresh token here
                     //return Response.ok().entity(device).build();
-                    return Response.status(Response.Status.OK).build();
+                    //return Response.status(Response.Status.OK).build();
                 } else {
                     return Response.status(Response.Status.NOT_ACCEPTABLE.getStatusCode()).entity(false).build();
                 }
             } catch (DeviceManagementException deviceManagementException) {
                 log.error(deviceManagementException.getErrorMessage(), deviceManagementException);
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(false).build();
-            } /*catch (JWTClientException jwtClientException) {
+            } catch (JWTClientException jwtClientException) {
                 //log.error(jwtClientException.getErrorMessage(), jwtClientException);
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(false).build();
             } catch (APIManagerException apiManagerException) {
@@ -180,7 +179,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
             } catch (UserStoreException userStoreException) {
                 //log.error(userStoreException.getErrorMessage(), userStoreException);
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(false).build();
-            }*/
+            }
         } else {
             return Response.status(Response.Status.NOT_ACCEPTABLE).build();
         }
@@ -268,7 +267,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
      public Response downloadSketch(@QueryParam("deviceName") String deviceName,
                         @QueryParam("sketchType") String sketchType) {
         try {
-            ZipArchive zipFile = createDownloadFile(APIUtil.getAuthenticatedUser(), deviceName, sketchType);
+            ZipArchive zipFile = createDownloadFile(/*APIUtil.getAuthenticatedUser()*/ "admin", deviceName, sketchType);
             Response.ResponseBuilder response = Response.ok(FileUtils.readFileToByteArray(zipFile.getZipFile()));
             response.status(Response.Status.OK);
             response.type("application/zip");
@@ -296,10 +295,17 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
          }
      }
 
+     private static String shortUUID() {
+         UUID uuid = UUID.randomUUID();
+         long l = ByteBuffer.wrap(uuid.toString().getBytes(StandardCharsets.UTF_8)).getLong();
+         return Long.toString(l, Character.MAX_RADIX);
+     }
 
      private ZipArchive createDownloadFile(String owner, String deviceName, String sketchType)
             throws DeviceManagementException, JWTClientException, APIManagerException,
             UserStoreException {
+
+         String deviceId = shortUUID();
 
          if (apiApplicationKey == null) {
             String applicationUsername = PrivilegedCarbonContext.getThreadLocalCarbonContext().getUserRealm()
@@ -311,7 +317,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
             DeviceTypeConstants.DEVICE_TYPE, tags, KEY_TYPE, applicationUsername, true);
          }
          JWTClient jwtClient = APIUtil.getJWTClientManagerService().getJWTClient();
-         String scopes = "device_type_" + DeviceTypeConstants.DEVICE_TYPE ;
+         String scopes = "device_type_" + DeviceTypeConstants.DEVICE_TYPE;
          AccessTokenInfo accessTokenInfo = jwtClient.getAccessToken(apiApplicationKey.getConsumerKey(),
          apiApplicationKey.getConsumerSecret(), owner + "@" + APIUtil.getAuthenticatedUserTenantDomain(), scopes);
 
@@ -323,7 +329,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
 
          ZipUtil ziputil = new ZipUtil();
          ZipArchive zipFile = ziputil.createZipFile(owner, APIUtil.getTenantDomainOftheUser(), sketchType,
-         "", deviceName, accessToken, refreshToken);
+                 deviceId, deviceName, accessToken, refreshToken);
          return zipFile;
      }
 

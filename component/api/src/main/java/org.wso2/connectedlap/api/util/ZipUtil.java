@@ -67,7 +67,7 @@ public class ZipUtil {
             Map<String, String> contextParams = new HashMap<>();
             contextParams.put("SERVER_NAME", APIUtil.getTenantDomainOftheUser());
             contextParams.put("DEVICE_OWNER", owner);
-            contextParams.put("DEVICE_ID", deviceId);
+            //contextParams.put("DEVICE_ID", deviceId);
             contextParams.put("DEVICE_NAME", deviceName);
             contextParams.put("HTTPS_EP", httpsServerEP);
             contextParams.put("HTTP_EP", httpServerEP);
