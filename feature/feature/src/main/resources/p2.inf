@@ -18,7 +18,9 @@ org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../featur
 instructions.unconfigure = \
 org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../conf/device-types/CONNECTEDLAP.xml);\
 org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../deployment/server/webapps/CONNECTEDLAP.war);\
+org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../deployment/server/webapps/connected-lap-agent.war);\
 org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../deployment/server/webapps/CONNECTEDLAP);\
+eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../deployment/server/webapps/connected-lap-agent);\
 org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../../dbscripts/cdm/plugins/CONNECTEDLAP);\
 org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../conf/datasources/CONNECTEDLAP-datasources.xml);\
 org.eclipse.equinox.p2.touchpoint.natives.remove(path:${installFolder}/../../database/CONNECTEDLAPDM_DB.h2.db);\
