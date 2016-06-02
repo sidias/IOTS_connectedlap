@@ -20,8 +20,8 @@ package org.wso2.agent.datasense;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.coffeeking.agent.transport.TransportHandlerException;
-import org.coffeeking.agent.transport.mqtt.ConnectedCupMQttTransportHandler;
+import org.wso2.agent.transport.TransportHandlerException;
+import org.wso2.agent.transport.mqtt.ConnectedCupMQttTransportHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
