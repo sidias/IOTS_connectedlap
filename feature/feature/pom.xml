@@ -136,11 +136,11 @@
                                 </artifactItem>
 				<artifactItem>
 				    <groupId>org.wso2</groupId>
-				    <artifactId>org.wso2.connectedcup.agent</artifactId>
+				    <artifactId>org.wso2.connectedlap.agent</artifactId>
 				    <type>war</type>
 				    <overWrite>true</overWrite>
       				    <outputDirectory>${project.build.directory}/maven-shared-archive-resources/webapps/</outputDirectory>
-				    <destFileName>connected-cup-agent.war</destFileName>
+				    <destFileName>connected-lap-agent.war</destFileName>
 				</artifactItem>
                             </artifactItems>
                         </configuration>
