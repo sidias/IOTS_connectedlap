@@ -192,7 +192,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
      * @param to    ending time
      * @return  response with List<SensorRecord> object which includes sensor data which is requested
      */
-    @Path("device/stats/{deviceId}/{sensorName}")
+    @Path("stats/{deviceId}/{sensorName}")
     @GET
     @Consumes("application/json")
     @Produces("application/json")
@@ -267,7 +267,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
      public Response downloadSketch(@QueryParam("deviceName") String deviceName,
                         @QueryParam("sketchType") String sketchType) {
         try {
-            ZipArchive zipFile = createDownloadFile(/*APIUtil.getAuthenticatedUser()*/ "admin", deviceName, sketchType);
+            ZipArchive zipFile = createDownloadFile(APIUtil.getAuthenticatedUser(), deviceName, sketchType);
             Response.ResponseBuilder response = Response.ok(FileUtils.readFileToByteArray(zipFile.getZipFile()));
             response.status(Response.Status.OK);
             response.type("application/zip");
@@ -338,16 +338,22 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
         switch (sensorName) {
             case "battery" :
                 summeryTableName = DeviceTypeConstants.DEVICE_BATTERY_STATS;
+                break;
             case "charger":
                 summeryTableName = DeviceTypeConstants.DEVICE_CHARGER_STATS;
+                break;
             case "cpu":
                 summeryTableName = DeviceTypeConstants.DEVICE_CPU_STATS;
+                break;
             case "network":
                 summeryTableName = DeviceTypeConstants.DEVICE_NETWORK_STATS;
+                break;
             case "memory":
                 summeryTableName = DeviceTypeConstants.DEVICE_MEMORY_STATS;
+                break;
             case "harddisc":
                 summeryTableName = DeviceTypeConstants.DEVICE_HARD_DISC_STATS;
+                break;
             default:
                summeryTableName = "";
         }
