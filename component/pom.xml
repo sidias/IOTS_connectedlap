@@ -50,6 +50,7 @@
     <module>api</module>
     <module>ui</module>
     <module>analytics</module>
+    <module>agent</module>
     <module>laptopagent</module>
   </modules>
 </project>
