@@ -26,6 +26,7 @@ public class JavaApp {
 	final static int TIMEINTERVAL=10000;//ms
 	public static String SUPASSWORD="";
 	static int TIMECOUNTER=0;// 5 minute interval sender tracker;
+    public static String deviceid;
 	
     public static void main(String args[]) {
     	
@@ -54,10 +55,13 @@ public class JavaApp {
     			String device_name=String.valueOf(config.getInitProperty("device-name"));
     	        Client client = Client.create(Common.configureClient());
     	        client.setConnectTimeout(50000);
-    	        WebResource webResource = client.resource("https://localhost:9443/CONNECTEDLAP/device/register"); 
+    	        WebResource webResource = client.resource("https://localhost:9443/CONNECTEDLAP/device/register");
+                String mac = spec.getMacaddress().replaceAll("\\:", "");
+                deviceid = mac;
+
     	        String request="{"
     	        		+ "\"owner\":\"admin\","
-    	        		+"\"deviceId\":\""+spec.getMacaddress()+"\","
+    	        		+"\"deviceId\":\""+mac+"\","
     	        		+"\"deviceName\": \""+device_name+"\","
     	        		+"\"discSpace\":"+spec.getStorage()+","
     	        		+"\"memory\":"+spec.getRamsize()+","
@@ -84,7 +88,7 @@ public class JavaApp {
     	    }    		
     		
     	}
-    	String deviceid=String.valueOf(new  Configuration().getProperty("deviceid"));
+    	//String deviceid=String.valueOf(new  Configuration().getProperty("deviceid"));
     	String owner=String.valueOf(new  Configuration().getInitProperty("owner"));
     	String devicetoken=String.valueOf(new  Configuration().getProperty("devicetoken"));
 		String devicerefreshtoken=String.valueOf(new  Configuration().getProperty("devicerefreshtoken"));
