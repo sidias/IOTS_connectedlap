@@ -1,8 +1,8 @@
 
 {
   "deviceType": {
-    "label": "CONNECTEDLAP",
-    "category": "virtual",
+    "label": "Connected Laptop",
+    "category": "iot",
     "downloadAgentUri": "CONNECTEDLAP/device/download"
   }
 }
