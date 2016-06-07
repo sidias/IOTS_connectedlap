@@ -35,7 +35,7 @@ public class DeviceTypeConstants {
     public static final String DEVICE_CPU_STATS = "DEVICE_CPU_USAGE_SUMMARY";
     public static final String DEVICE_NETWORK_STATS = "DEVICE_NETWORK_TRAFFIC_SUMMARY";
     public static final String DEVICE_MEMORY_STATS = "DEVICE_MEMORY_USAGE_SUMMARY";
-    public static final String DEVICE_HARD_DISC_STATS = "DEVICE_HARD_DISK_USAGE_SUMMARY​";
+    public static final String DEVICE_HARD_DISC_STATS = "DEVICE_HARD_DISK_USAGE_SUMMARY";
 
     public static final String DATA_SOURCE_NAME = "jdbc/CONNECTEDLAPDM_DB";
     public final static String DEVICE_TYPE_PROVIDER_DOMAIN = "carbon.super";
