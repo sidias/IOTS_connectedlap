@@ -229,13 +229,13 @@ function drawGraph_CONNECTEDLAP(from, to) {
                 columnData = data.values.cpuusage;
                 break;
 	    case "network" :
-                columnData = data.values.networkusage;
+                columnData = data.values.networktraffic;
                 break;
 	    case "memory" :
                 columnData = data.values.memoryusage;
                 break;
 	    case "harddisc" :
-                columnData = data.values.harddiscusage;
+                columnData = data.values.harddiskusage;
                 break;
         }
 
