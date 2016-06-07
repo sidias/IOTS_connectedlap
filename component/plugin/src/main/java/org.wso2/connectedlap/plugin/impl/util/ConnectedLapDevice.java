@@ -35,11 +35,11 @@ public class ConnectedLapDevice{
 
     public ConnectedLapDevice () {}
 
-    public ConnectedLapDevice(String id ,Float discSpace, Float memory, String cupInfo, String networkType, int cpuCores) {
+    public ConnectedLapDevice(String id ,Float discSpace, Float memory, String LapInfo, String networkType, int cpuCores) {
         this.id = id;
         this.discSpace = discSpace;
         this.memory = memory;
-        this.cpuInfo = cupInfo;
+        this.cpuInfo = LapInfo;
         this.networkType = networkType;
         this.cpuCores = cpuCores;
     }

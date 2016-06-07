@@ -28,19 +28,19 @@ import java.io.File;
 import java.util.UUID;
 import java.util.concurrent.ScheduledFuture;
 
-public class ConnectedCupMQttTransportHandler extends MQTTTransportHandler {
+public class ConnectedLapMQttTransportHandler extends MQTTTransportHandler {
 
-    private static Log log = LogFactory.getLog(ConnectedCupMQttTransportHandler.class);
+    private static Log log = LogFactory.getLog(ConnectedLapMQttTransportHandler.class);
 
     private static String iotServerSubscriber = UUID.randomUUID().toString().substring(0, 5);
 
     private static final String DEVICE_TYPE = "connectedlap";
 
-    private static ConnectedCupMQttTransportHandler connectedCupMQttTransportHandler;
+    private static ConnectedLapMQttTransportHandler connectedLapMQttTransportHandler;
 
     private static String publishTopic = "%s/" + DEVICE_TYPE + "/%s";
 
-    protected ConnectedCupMQttTransportHandler() {
+    protected ConnectedLapMQttTransportHandler() {
         super(iotServerSubscriber, DEVICE_TYPE, "tcp://localhost:1883", "");
     }
 
@@ -89,7 +89,7 @@ public class ConnectedCupMQttTransportHandler extends MQTTTransportHandler {
     public void processIncomingMessage(MqttMessage message, String... messageParams) {
     }
 
-    public void publishToConnectedCup(String deviceOwner , String deviceId, String payLoad, String tenantDomain, int qos, boolean retained)
+    public void publishToConnectedLap(String deviceOwner , String deviceId, String payLoad, String tenantDomain, int qos, boolean retained)
             throws TransportHandlerException{
         String topic = String.format(publishTopic, tenantDomain, deviceId);
         publishToQueue(topic, payLoad, qos, retained);
@@ -150,11 +150,11 @@ public class ConnectedCupMQttTransportHandler extends MQTTTransportHandler {
 
     }
 
-    public static ConnectedCupMQttTransportHandler getInstance(){
-        if(connectedCupMQttTransportHandler == null){
-            connectedCupMQttTransportHandler = new ConnectedCupMQttTransportHandler();
+    public static ConnectedLapMQttTransportHandler getInstance(){
+        if(connectedLapMQttTransportHandler == null){
+            connectedLapMQttTransportHandler = new ConnectedLapMQttTransportHandler();
         }
-        return connectedCupMQttTransportHandler;
+        return connectedLapMQttTransportHandler;
     }
 
 }

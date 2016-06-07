@@ -53,7 +53,7 @@ public class BashRunner {
 				script = new String[]{ "/bin/sh", "-c", "echo "+suPassword+" | sudo -S dmidecode -t 17 | grep 'Size.*MB' | awk '{s+=$2} END {print s / 1024}'"+" | tr '\n' ' '"};
 			if(scriptid==4)
 //				script = new String[]{ "/bin/sh", "-c", "echo Amilapwd1 | sudo -S hdparm -I /dev/sda |grep 'device size with M = 1000\\*1000' | awk '{print substr($0, index($0,$9))}' | awk -F'[\t(]' '{print $2}' | awk '{print substr($1,0)}'"+" | tr '\n' ' '"};
-				script = new String[]{ "/bin/sh", "-c", "echo "+suPassword+" | sudo -S fdisk -l | grep 'Disk /' | awk '{print $3}'"+" | tr '\n' ' '"};
+                script = new String[]{ "/bin/sh", "-c", "echo "+suPassword+" | sudo -S fdisk -l | grep 'Disk /dev/sda' | awk '{print $3}'"+" | tr '\n' ' '"};
 			if(scriptid==5)
 				script = new String[]{ "/bin/sh", "-c", "echo "+suPassword+" | sudo -S hdparm -I /dev/sda |grep 'device size with M = 1000\\*1000' | awk '{print $0}' | awk -F'[\t(]' '{print $2}' | awk '{print substr($1,0)}'"+" | tr '\n' ' '"};
 			if(scriptid==10)

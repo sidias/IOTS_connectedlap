@@ -64,6 +64,8 @@ public class DeviceTypeConstants {
     public static final String CLEAR_SESSION_PROPERTY_KEY = "clearSession";
     public static final String TOPIC = "topic";
 
+    public static final int QUALITY_OF_SERVICE = 2;
+
     public final static String SENSOR_STREAM_DEFINITION = "org.wso2.iot.devices.CONNECTEDLAP";
     public final static String SENSOR_STREAM_DEFINITION_VERSION = "1.0.0";
 

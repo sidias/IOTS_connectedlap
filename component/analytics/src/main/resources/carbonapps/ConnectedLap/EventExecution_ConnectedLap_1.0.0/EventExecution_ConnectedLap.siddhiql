@@ -2,7 +2,7 @@
 @Plan:name('connectedlap_execution')
 
 /* Enter a unique description for ExecutionPlan */
--- @Plan:description('connectedcup_execution')
+-- @Plan:description('connectedLap_execution')
 
 /* define streams/tables and write queries here ... */
 

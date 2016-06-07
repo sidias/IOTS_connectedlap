@@ -81,42 +81,4 @@ public interface DeviceTypeService {
     @Produces("application/zip")
     @Permission(scope = "CONNECTEDLAP_user", permissions = {"/permission/admin/device-mgt/download"})
     Response downloadSketch(@QueryParam("deviceName") String deviceName, @QueryParam("sketchType") String sketchType);
-
-    /*
-    /**
-     * @param deviceId unique identifier for given device type
-     * @param state    change status of sensor: on/off
-     * @param response
-
-    @Path("device/{deviceId}/change-status")
-    @POST
-    @Feature(code = "change-status", name = "Change status of sensor: on/off",
-            description = "Change status of sensor: on/off")
-    @Permission(scope = "CONNECTEDLAP_user", permissions = {"/permission/admin/device-mgt/change-status"})
-    Response changeStatus(@PathParam("deviceId") String deviceId,
-                          @QueryParam("state") String state,
-                          @Context HttpServletResponse response);
-
-
-
-    @Path("/device/{device_id}")
-    @DELETE
-    @Permission(scope = "CONNECTEDLAP_user", permissions = {"/permission/admin/device-mgt/removeDevice"})
-    Response removeDevice(@PathParam("device_id") String deviceId);
-
-    @Path("/device/{device_id}")
-    @PUT
-    @Permission(scope = "CONNECTEDLAP_user", permissions = {"/permission/admin/device-mgt/updateDevice"})
-    Response updateDevice(@PathParam("device_id") String deviceId, @QueryParam("name") String name);
-
-
-
-    @Path("/devices")
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Permission(scope = "CONNECTEDLAP_user", permissions = {"/permission/admin/device-mgt/devices"})
-    Response getAllDevices();
-
-     */
 }

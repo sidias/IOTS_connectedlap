@@ -21,7 +21,7 @@ package org.wso2.agent.datasense;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.agent.transport.TransportHandlerException;
-import org.wso2.agent.transport.mqtt.ConnectedCupMQttTransportHandler;
+import org.wso2.agent.transport.mqtt.ConnectedLapMQttTransportHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +32,10 @@ import java.io.PrintWriter;
 
 public class PushData extends HttpServlet {
     private static final Log log = LogFactory.getLog(PushData.class);
-    private ConnectedCupMQttTransportHandler connectedCupMQttTransportHandler;
+    private ConnectedLapMQttTransportHandler connectedLapMQttTransportHandler;
 
     public PushData() {
-        connectedCupMQttTransportHandler = ConnectedCupMQttTransportHandler.getInstance();
+        connectedLapMQttTransportHandler = ConnectedLapMQttTransportHandler.getInstance();
     }
 
     @Override
@@ -57,13 +57,13 @@ public class PushData extends HttpServlet {
 
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json; charset=UTF-8;");
-        if (!connectedCupMQttTransportHandler.isConnected()) {
-            connectedCupMQttTransportHandler.setToken(token);
-            connectedCupMQttTransportHandler.connect();
+        if (!connectedLapMQttTransportHandler.isConnected()) {
+            connectedLapMQttTransportHandler.setToken(token);
+            connectedLapMQttTransportHandler.connect();
         }
         try {
-            if (connectedCupMQttTransportHandler.isConnected()) {
-                connectedCupMQttTransportHandler.publishToConnectedCup(deviceOwner, deviceId, payload, tenantDomain, 0,
+            if (connectedLapMQttTransportHandler.isConnected()) {
+                connectedLapMQttTransportHandler.publishToConnectedLap(deviceOwner, deviceId, payload, tenantDomain, 0,
                         true);
                 out.println("{\"success\": true }");
             }else {

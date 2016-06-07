@@ -62,7 +62,8 @@ public class SystemSpec {
 	}
 
 	public void setMacaddress(String macaddress) {
-		this.macaddress = macaddress;
+		macaddress = macaddress.replaceAll("\\:", "");
+        this.macaddress = macaddress;
 	}
 
 	

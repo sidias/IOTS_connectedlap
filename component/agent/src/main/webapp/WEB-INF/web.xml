@@ -2,7 +2,7 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
-    <display-name>ConnectedCup-Webapp</display-name>
+    <display-name>ConnectedLap-Webapp</display-name>
 
     <servlet>
         <servlet-name>PushData</servlet-name>
