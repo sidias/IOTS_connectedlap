@@ -30,19 +30,24 @@ public class JavaApp {
 	
     public static void main(String args[]) {
     	
-    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter Super User Password");
-        System.out.print("Enter Password:");
+    	System.out.println("Enter Super User Password");
+	BufferedReader br = null;
         try{
-        	JavaApp.SUPASSWORD = String.valueOf(br.readLine());
+		Console console = System.console();
+		//String username = console.readLine("Username: ");
+		char[] password = console.readPassword("Password: ");
+		JavaApp.SUPASSWORD= String.valueOf(password);
+
+		//br = new BufferedReader(new InputStreamReader(System.in));
+		//JavaApp.SUPASSWORD = String.valueOf(br.readLine());
         }catch(Exception e){
-            System.out.println("Retreving Password Failed!");            
+            System.out.println("Retrieving Password Failed!");
         }finally{
         	try{
         		br.close();
         	}catch(Exception e){}
         }
-    	
+        
     	if(!new  Configuration().checkRegistered()){
     		SystemSpec spec=new Monitor().getSysInfo(JavaApp.SUPASSWORD); 
     		String devicetoken=new String();
