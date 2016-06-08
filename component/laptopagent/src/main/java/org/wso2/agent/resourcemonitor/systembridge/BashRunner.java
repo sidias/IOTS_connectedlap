@@ -33,7 +33,7 @@ public class BashRunner {
 
 	}
 
-	public String runScript(String os, int scriptid,String suPassword) throws Exception {
+	public String runScript(String os, int scriptid, String suPassword) throws Exception {
 		String[] script = this.getScript(os, scriptid,suPassword);
 		String output = this.executeScript(script);
 		//System.out.println(output);
